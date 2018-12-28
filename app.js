@@ -12,5 +12,8 @@ app.get('/contact', function(req, res){
 });
 
 app.get('/profile/:name', function(req, res){
-  res.render('profile');
+  let tempObj = {age: 29, job: 'street fighter', hobbies: ['fighting', 'rivalry with Ken', 'shoppign for gis', 'training']};
+  res.render('profile', {person: req.params.name, tempObj: tempObj});
 });
+
+app.listen(3000);
