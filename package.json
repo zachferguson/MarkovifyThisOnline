@@ -1,0 +1,19 @@
+{
+  "name": "nodeprac-master",
+  "version": "1.0.0",
+  "description": "test app",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blah"
+  ],
+  "author": "zach",
+  "license": "ISC"
+}
