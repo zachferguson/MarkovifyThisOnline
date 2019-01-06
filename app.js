@@ -106,15 +106,14 @@ app.get('/profile/:name', function(req, res){
 // POST HANDLING
 app.post('/companysignup', urlencodedParser, function (req, res) {
 
+  // assumes the company info is all already used: company, username, email, and phone number
   let existing = {checkCompanyName: true, checkUserName: true, checkEmail: true, checkPhone: true};
 
-  /*
-  // hopefully redirects to confirm via email page... called after promises.
-  function registrationSuccess (req, res) {
-    res.redirect('/emailconfirmation');
-  }
-  */
   function registrationDecision (inval) {
+    // checks whether any of the company information already exists.
+
+    // ******* ADD TO FAILURE PAGE REASON FOR FAILURE *******
+
     if (Object.values(inval).includes(true)) {
       console.log('something already existed...');
       console.log(inval);
@@ -144,13 +143,7 @@ app.post('/companysignup', urlencodedParser, function (req, res) {
         console.log('company ' + verify.company + ' already exists.');
       }
       else {
-        console.log('');
-        console.log('company ' + req.body.companyName + ' does not yet exist.');
-        console.log('company name exists currently: ' + existing['checkCompanyName']);
         existing['checkCompanyName'] = false;
-        console.log('company name exists has been changed to ' + existing['checkCompanyName']);
-        console.log('whole existing object:');
-        console.log(existing);
       }
       resolve(verify);
     });
@@ -163,13 +156,7 @@ app.post('/companysignup', urlencodedParser, function (req, res) {
         console.log('username ' + verify.userName + ' already exists.');
       }
       else {
-        console.log('');
-        console.log('username ' + req.body.companyUserName + ' does not yet exist.');
-        console.log('username exists currently: ' + existing['checkUserName']);
         existing['checkUserName'] = false;
-        console.log('username exists has been changed to ' + existing['checkUserName']);
-        console.log('whole existing object:');
-        console.log(existing);
       }
       resolve(verify);
     });
@@ -183,13 +170,7 @@ app.post('/companysignup', urlencodedParser, function (req, res) {
         console.log('email address ' + verify.email + ' already in use.');
       }
       else {
-        console.log('');
-        console.log('email address ' + req.body.companyEmail + ' not yet in use.');
-        console.log('email exists currently: ' + existing['checkEmail']);
         existing['checkEmail'] = false;
-        console.log('email exists has been changed to ' + existing['checkEmail;']);
-        console.log('whole existing object:');
-        console.log(existing);
       }
       resolve(verify);
     });
@@ -203,13 +184,7 @@ app.post('/companysignup', urlencodedParser, function (req, res) {
         console.log('phone number ' + verify.phoneNumber+ ' already in use.');
       }
       else {
-        console.log('');
-        console.log('phone number (' + req.body.companyAreaCode + ') ' + req.body.companyPhone + ' not yet in use.');
-        console.log('phone number exists currently: ' + existing['checkPhone']);
         existing['checkPhone'] = false;
-        console.log('phone number exists has been changed to ' + existing['checkPhone']);
-        console.log('whole existing object:');
-        console.log(existing);
       }
       resolve(verify);
     });
@@ -221,14 +196,6 @@ app.post('/companysignup', urlencodedParser, function (req, res) {
         checkPhoneNumber.then( function () {
           registrationDecision(existing);
         }))));
-
-  // run checker function on each item in looplist, update unexisting if value isn't already registered, and if no values are registered, add new user to database
-  // if values already used, send to failed registration screen
-
-  //let unexisting = {checkCompanyName: true, checkUserName: true, checkEmail: true, checkPhone: true};
-  //let looplist = [['company', req.body.companyName, 'checkCompanyName'], ['userName', req.body.companyUserName, 'checkUserName'], ['email', req.body.companyEmail, 'checkEmail'], ['phoneNumber', req.body.companyAreaCode + req.body.companyPhone, 'checkPhone']]
-
-
 
   /*
   newCompany(req.body.companyName, req.body.companyAddressPrimary, req.body.companyAddressSecondary, req.body.companyCity, req.body.companyState, req.body.companyZip, req.body.companyAreaCode + req.body.companyPhone, req.body.companyUserName, req.body.companyPassword, req.body.companyFirstName, req.body.companyLastName);
