@@ -4,8 +4,11 @@
   "description": "test app",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "client-sessions": "^0.8.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "nedb": "^1.8.0"
   },
   "devDependencies": {},
   "scripts": {
