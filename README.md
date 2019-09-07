@@ -5,3 +5,5 @@ a Python Markov chain generator that responsds to Node, which uses EJS to update
 
 Please note that all books are available at Project Gutenburg except 50 Shades of Gray, which has been significantly truncated to 
 avoid download for the purpose of reading.
+
+To run, "node ptest", then open a browser and "http://localhost:3000/markovifyThis"
