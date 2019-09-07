@@ -1,0 +1,225 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="top down rpg">
+
+  <!-- <link rel="stylesheet" type="text/css" href="css/game.css"> -->
+  <style>
+    body {
+      background-color: black;
+      color: whitesmoke;
+      width: 100%;
+    }
+
+    canvas {
+      background-color: white;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    div {
+      border: 1px solid red;
+    }
+
+    #gameWrapper {
+      display: grid;
+      grid-template-areas: "header header header"
+                           "gameScreen gameScreen gameScreen"
+                           "actionControls directionControls directionControls";
+      grid-template-rows: 10vh 60vh 25vh;
+      grid-template-columns: 32vw 32vw 32vw;
+      text-align: center;
+      padding: 2px;
+    }
+
+    #header {
+      grid-area: header;
+      background-color: black;
+    }
+
+    #gameScreen {
+      grid-area: gameScreen;
+      background-color: black;
+      border: 1px solid darkgrey;
+      border-radius: 5px;
+    }
+
+    #actionControls {
+      grid-area: actionControls;
+      background-color: black;
+    }
+
+    #directionControls {
+      grid-area: directionControls;
+      background-color: black;
+    }
+  </style>
+
+  <title>Dungeon of Chavadez</title>
+</head>
+
+<body>
+  <div id="gameWrapper">
+    <div id="header">
+      <h1>Dungeon of Chavadez</h1>
+    </div>
+    <div id="gameScreen">
+      <div class="iq">
+        <p class="question">What did you learn yesterday/this week?</p>
+        <p class="answer">This one will change pretty often, but at time of
+          writing, I'm working on a Javascript game with canvas. Last week, it
+          was ejs in Node.</p>
+      </div>
+      <div class="iq">
+        <p class="question">What excites or interests you about coding?</p>
+        <p class="answer">What doesn't?! The thing that excites me most, though,
+         is being able to type away at the keyboard for a while, and then make
+       the computer do something! It's like art and magic. I also love the
+       feeling that I get when I finally make something difficult work.</p>
+      </div>
+      <div class="iq">
+        <p class="question">What is a recent technical challenge you experienced
+           and how did you solve it?</p>
+        <p class="answer">Most recently, I needed to have a database for a
+        personal project (EquipInspect.com), and I figured out how to integrate
+        nedb into Node, Express, and ejs. I am currently struggling with making
+        Node POST data to a Python program, and pupulate an ejs template with
+        the returned data (it works on locakhost, but not my server).</p>
+      </div>
+      <div>
+        <p class="question">When building a new web site or maintaining one,
+          can you explain some techniques you have used to increase performance?
+        </p>
+        <p class="answer">I haven't really run into this issue yet, although I
+        do test alternative methods of solving a problem for speed on occasion,
+         and also read about the optimal way to do the same online.</p>
+      </div>
+      <div>
+        <p class="question">Can you describe some SEO best practices or
+          techniques you have used lately?</p>
+        <p class="answer">Completely out of my wheelhouse. I'm not so much
+        interested in UI/UX as I am in JavaScript and back end. </p>
+      </div>
+      <div>
+        <p class="question">Can you explain any common techniques or recent
+          issues solved in regards to front-end security?</p>
+        <p class="answer">I'm not sure it counts as fromt end, but I recently
+        discovered and implemented sessions in my Node app.</p>
+      </div>
+      <div>
+        <p class="question">What actions have you personally taken on recent
+          projects to increase maintainability of your code?</p>
+        <p class="answer">I learned (from the Coding Blocks podcast) that my
+        variable names should be much more descriptive than I had been making
+        them, and changed that. I also have been commenting more and organizing
+        my code (functions, variables, etc) better.</p>
+      </div>
+      <div>
+        <p class="question">Talk about your preferred development environment.
+        </p>
+        <p class="answer">I program primarily in Atom, with
+          Platformio-IDE-Terminal on a Debian Stretch desktop with dual
+          monitors. I usually just use IDLE for Python programming.</p>
+      </div>
+      <div>
+        <p class="question">Which version control systems are you familiar with?
+        </p>
+        <p class="answer">System, singular. I use git (built into Atom).</p>
+      </div>
+      <div>
+        <p class="question">Can you describe your workflow when you create a
+          web page?</p>
+        <p class="answer">I'm still in the process of developing my workflow,
+        but currently, I set up a dummy page with colored divs with CSS grid,
+        and once I have spacing and media queries roughed out, place some
+        content. After testing that a bit, I add in Javascript as necessary.</p>
+      </div>
+      <div>
+        <p class="question">If you have 5 different stylesheets, how would you
+          best integrate them into the site?</p>
+        <p class="answer">My understanding of HTML5 is that it is actually much
+        faster to call in multiple small resources than one big one now. I'd
+        search them for repeated/duplicated items, and call them individually.</p>
+      </div>
+      <div>
+        <p class="question">Can you describe the difference between progressive
+          enhancement and graceful degradation?</p>
+        <p class="answer">They're mostly just which way you design. progressive
+        enhancement is building off of a base in case features are available,
+        and graceful degradation is building will all features, and planning
+        what happens if they disappear.</p>
+      </div>
+      <div>
+        <p class="question">How would you optimize a website's assets/resources?</p>
+        <p class="answer">This is a pretty open ended question. I prefer strict
+        organization into folders and sub-folders, using images of the minimum
+        acceptable file-size, and I'd probably try to compare CSS if there were
+        more than one file to make sure nothing is duplicated.</p>
+      </div>
+
+      How many resources will a browser download from a given domain at a time?
+      What are the exceptions?
+      <div>
+        <p class="question">Name 3 ways to decrease page load (perceived or
+          actual load time).</p>
+        <p class="answer">Load the js after the HTML, so that the site is
+          visually ready even if the interactivity lags behind. Minimize the use
+          of libraries (don't use jQuery if you don't need to, and if you use
+          Bootstrap, cut out the parts you don't need). For necessary libraries,
+          research and use the most common CDNs (since the user is more likely
+          to already have them downloaded). </p>
+      </div>
+      <div>
+        <p class="question">If you jumped on a project and they used tabs and
+          you used spaces, what would you do?</p>
+        <p class="answer">I'd continue to use spaces, then write a Python
+         program to scan and change spaces to tabs, and use it before committing
+          code.</p>
+      </div>
+      <div>
+        <p class="question">Describe how you would create a simple slideshow
+          page.</p>
+        <p class="answer">I'd probably use jQuery for the pretty fade effect. I
+        might use Bootstrap. If I were to do it myself (time available), the
+        first thing that comes to mind is changing the img src property with
+        either setInterval or left and right 'scroll' buttons.</p>
+      </div>
+
+      If you could master one technology this year, what would it be?
+      Explain the importance of standards and standards bodies.
+      <div>
+        <p class="question">What is Flash of Unstyled Content? How do you avoid
+          FOUC?</p>
+        <p class="answer">FOUC is when the html of the page loads before the css
+         is applied to is. There are probably a million ways to avoid it, but I
+         would think minimizing the loadtime of your css, or possibly using a
+         js promise to display content? </p>
+      </div>
+
+      Explain what ARIA and screenreaders are, and how to make a website accessible.
+      Explain some of the pros and cons for CSS animations versus JavaScript animations.
+      What does CORS stand for and what issue does it address?
+      How did you handle a disagreement with your boss or your collaborator?
+      <div>
+        <p class="question">What resources do you use to learn about the latest
+          in front end development and design?</p>
+        <p class="answer">This is a huge answer. I use Udemy, Coursera, EdX,
+        FreeCodeCamp, ShopTalkShow and several other podcasts, Google's search
+        tools "within the last year" constraint when researching answers, and I
+        am subscribed to several e-mailed developer news resources.</p>
+      </div>
+
+    </div>
+    <div id="actionControls">
+      <p>Action Controls</p>
+    </div>
+    <div id="directionControls">
+      <p>Direction Controls</p>
+    </div>
+  </div>
+
+</body>
+</html>

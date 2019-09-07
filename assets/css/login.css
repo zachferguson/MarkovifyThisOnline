@@ -1,11 +1,21 @@
 p {
-  color: whitesmoke;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
   text-align: center;
 }
 
 h3 {
   color: whitesmoke;
   text-align: center;
+}
+a {
+  color: royalblue;
 }
 
 form {
@@ -15,6 +25,7 @@ form {
 
 body {
   background: black;
+  color: whitesmoke;
 }
 
 .logoimg {
@@ -74,6 +85,19 @@ i.whitened {
   cursor: pointer;
 }
 
+.optionsContainer {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.verticalNavElement {
+  width: 80%;
+  margin: 0 auto 0 auto;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
 .choiceButtonSelected {
   background-color: darkgreen;
   border: 2px solid dimgrey;
@@ -84,4 +108,8 @@ i.whitened {
   background-color: rgb(29,29,29);
   border-bottom: 2px solid dimgrey;
   border-radius: 5px;
+}
+
+#loginMessage {
+  color: red;
 }

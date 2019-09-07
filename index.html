@@ -22,7 +22,6 @@
     </div>
     <h3 id="loginExplanation">Equipment Inspector Login</h3>
     <p id="loginDescription">* log in to inspect equipment.</p>
-    <!-- <form id="create-company" method="POST" action="/companysignup"> -->
     <form id="loginInfoForm" method='POST' action="/index">
       User Name: <br> <input id='un' type='text' name='username'>
       <br>
@@ -30,9 +29,10 @@
       Password: <br> <input id='pw' type='password' name='password'>
       <br>
       <br>
-      <input id="loginType" type='hidden' value='inspector'>
+      <input id="loginType" style="display:none;" name="loginType" value='inspector'>
       <input id="submitbtn" type='submit' value='Submit'>
     </form>
+    <p id="loginMessage"></p>
   </div>
   <p>* You must create a company account to assign inspectors.</p>
   <div class='buttonContainer'>
@@ -40,7 +40,6 @@
     <div  class='mainLink choiceButtonUnselected' id='examplesLink'><a href='#' class='unButton'>Example Inspection</a></div>
   </div>
 
-  // script to control which login
   <script>
       function resetButtons () {
         document.getElementById("inspectorLog").classList.remove('choiceButtonSelected');
